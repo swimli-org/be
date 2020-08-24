@@ -16,8 +16,4 @@ server.get('/', (req, res) => {
 server.post('/', (req, res) => {
 
 });
-
-
-
-
 module.exports = server;
