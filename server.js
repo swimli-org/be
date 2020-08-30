@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require("cors");
-
+const userRouter = require('./user/userRoutes');
 const server = express();
 server.use(cors());
 server.use(express.json());
@@ -10,6 +10,7 @@ server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
     next();
   });
+server.use('/users', userRouter);
 server.get('/', (req, res) => {
     res.status(200).send("API RUNNING")
 });
