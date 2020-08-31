@@ -9,7 +9,7 @@ module.exports = {
     // getUserProducts,
     // insertUserProducts,
     // removeUserProducts,
-    // getBy,
+    getBy,
     // getAllProducts,
     // updateProducts
   };
@@ -30,9 +30,9 @@ module.exports = {
 //       .where({ id })
 //       .first();
 //   }
-//   function getBy(filter) {
-//     return db('users').where(filter);
-//   }
+  function getBy(filter) {
+    return db('users').where(filter);
+  }
   function insert(user) {
     return db('users')
       .insert(user)
