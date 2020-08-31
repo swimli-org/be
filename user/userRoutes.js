@@ -19,7 +19,7 @@ router.post('/register', (req, res) => {
     db.insert(user)
       .then(saved => {
         const token = createToken.genToken(user)
-        res.status(201).json({id:saved.id, name:saved.name, token:token});
+        res.status(201).json({id:saved.id, first_name:saved.first_name, last_name:saved.last_name, email:saved.email, token:token});
       })
       .catch(error => {
         res.status(500).json(error);
