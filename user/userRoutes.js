@@ -27,8 +27,8 @@ router.post('/register', (req, res) => {
       });
   });
   router.post('/login', (req, res) => {
-    let { phone, password } = req.body;
-    db.getBy({ phone })
+    let { email, password } = req.body;
+    db.getBy({ email })
       .first()
       .then(user => {
         if (user && bcrypt.compareSync(password, user.password)) {
