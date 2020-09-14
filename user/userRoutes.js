@@ -60,6 +60,18 @@ router.put('/:id', (req, res) =>{
   }) : res.status(400).json({ errorMessage: "Please provide id and changes for the user." })
 })
 
+router.delete('/:id', (req,res) => {
+  const {id} = req.params;
+
+  db.remove(id)
+  .then(status =>{
+    res.status(200).json(status)
+  })
+  .catch(err =>{
+    res.status(500).json({error: "The user could not be deleted"})
+  })
+})
+
 
 
 module.exports = router;

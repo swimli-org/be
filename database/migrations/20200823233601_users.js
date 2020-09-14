@@ -15,11 +15,15 @@ exports.up = function(knex) {
     .createTable('products', function(products) {
         products.increments('id');
         products.string('sku').unique();
+        products.string('img_path')
         products.string('brand')
         products.string('name')
+        products.string('description')
         products.string('price')
-        products.boolean('isInStock').defaultTo(false)
         products.string('category')
+        products.string('sub_category')
+        products.integer('weight_lbs')
+        products.integer('inventory')
         products.string('tag');
       })
 };
