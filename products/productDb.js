@@ -33,7 +33,8 @@ module.exports = {
   function update(id, changes) {
     return db('products')
       .where({ id })
-      .update(changes);
+      .update(changes)
+      
   }
   
   function remove(id) {
