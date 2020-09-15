@@ -36,6 +36,17 @@ exports.up = function(knex) {
         cartItem.timestamp('created_at').defaultTo(knex.fn.now())
         cartItem.integer('quantity').defaultTo(1)
       })
+      .createTable('discount', function(discount) {
+        discount.increments('id')
+        discount.string('discount_name')
+        discount.float('discount_value_decimal')
+      })
+      .createTable('orders', function(orders) {
+        orders.increments('id')
+      })
+      .createTable('tags', function(tags) {
+        tags.increments('id')
+      })
 };
 
 exports.down = function(knex) {
