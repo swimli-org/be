@@ -12,6 +12,7 @@ exports.up = function(knex) {
       users.string('state');
       users.string('zip');
     })
+    
     .createTable('products', function(products) {
         products.increments('id').primary()
         products.string('sku').unique();
