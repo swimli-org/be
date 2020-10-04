@@ -47,6 +47,6 @@ module.exports = {
     return db('cartItem')
       .join('users', 'users.id', 'cartItem.user_id')
       .join('products', 'products.id', 'cartItem.product_id')
-      .select('cartItem.id AS cid', 'products.id AS pid', 'users.id AS uid')
+      .select('*','cartItem.id AS cartItem_id', 'products.id AS product_id', 'users.id AS user_id')
       .where('cartItem.user_id', userId);
   }

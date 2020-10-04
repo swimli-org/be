@@ -3,6 +3,7 @@ const cors = require("cors");
 const userRouter = require('./user/userRoutes');
 const productsRouter = require('./products/productRoutes')
 const cartItemsRouter = require('./cartItems/cartItemsRoutes');
+const discountRouter = require('./discount/discountRoutes');
 const server = express();
 server.use(cors());
 server.use(express.json());
@@ -15,6 +16,7 @@ server.use(function(req, res, next) {
 server.use('/users', userRouter);
 server.use('/products', productsRouter)
 server.use('/cart', cartItemsRouter)
+server.use('/discounts', discountRouter)
 server.get('/', (req, res) => {
     res.status(200).send("API RUNNING")
 });
