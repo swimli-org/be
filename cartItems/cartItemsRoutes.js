@@ -25,7 +25,6 @@ router.get('/', (req,res) => {
     })
   })
 
-
   router.post('/cartItemByAttribute', (req,res) => {
       const {attribute} = req.body.attribute
     db.getBy(attribute)
@@ -96,7 +95,7 @@ router.post('/add', (req, res) => {
     db.getUserProducts(user_id)
     .then(products =>{
         products.forEach(el =>{
-            db.remove(el.cid)
+            db.remove(el.cartItem_id)
             .then(res =>{
                 console.log(res)
             })

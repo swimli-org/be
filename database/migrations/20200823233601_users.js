@@ -58,7 +58,7 @@ exports.up = function(knex) {
         discount.float('value')
       })
       .createTable('orders', function(orders) {
-        orders.increments('id')
+        orders.increments('id');
         orders.integer('user_id').unsigned().notNullable().references('id').inTable('users').onUpdate("CASCADE")
         .onDelete("CASCADE")
         orders.integer('address_id').unsigned().notNullable().references('id').inTable('address').onUpdate("CASCADE")
@@ -69,7 +69,7 @@ exports.up = function(knex) {
         orders.timestamp('modified_at')
         orders.string('status')
         orders.string('amount')
-        orders.string('tracking_number')
+        orders.string('tracking_number');
 
       })
       .createTable('order_items', function(order_items) {
@@ -86,6 +86,19 @@ exports.up = function(knex) {
         .onDelete("CASCADE")
         tags.string('tag_name')
       })
+      .createTable('autoship', function(autoship) {
+        autoship.increments('id');
+        autoship.integer('user_id').unsigned().notNullable().references('id').inTable('users').onUpdate("CASCADE");
+        autoship.string('autoship_start_date');
+        autoship.string('frequency')
+        autoship.string('last_ship_date')
+        autoship.string('next_ship_date')
+      })
+      .createTable('autoship_items', function(autoship_items) {
+        autoship_items.increments('id');
+        autoship_items.integer('autoship_id').unsigned().notNullable().references('id').inTable('autoship').onUpdate("CASCADE");
+      })
+
 };
 
 exports.down = function(knex) {
