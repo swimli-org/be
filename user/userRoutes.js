@@ -5,13 +5,13 @@ const restricted = require('../auth/auth-middleware');
 const router = express.Router();
 const createToken = require('./token')
 // DANGER ====== TESTING ROUTE ONLY ======== DANGER
-// router.get('/', (req,res) =>{
-//     db.get().then(users => {
-//         res.status(200).json(users);
-//     }).catch(err => {
-//         res.status(500).json({ error: "The user information could not be retrieved." })
-//     })
-// })
+router.get('/', (req,res) =>{
+    db.get().then(users => {
+        res.status(200).json(users);
+    }).catch(err => {
+        res.status(500).json({ error: "The user information could not be retrieved." })
+    })
+})
 router.post('/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
@@ -58,6 +58,18 @@ router.put('/:id', (req, res) =>{
   }) .catch(err =>{
       res.status(500).json({ error: "The user information could not be modified.", errorMessage:err })
   }) : res.status(400).json({ errorMessage: "Please provide id and changes for the user." })
+})
+
+router.delete('/:id', (req,res) => {
+  const {id} = req.params;
+
+  db.remove(id)
+  .then(status =>{
+    res.status(200).json(status)
+  })
+  .catch(err =>{
+    res.status(500).json({error: "The user could not be deleted"})
+  })
 })
 
 
