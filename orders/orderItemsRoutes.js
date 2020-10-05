@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../orders/ordersDb')
+const db = require('../orders/orderItemsDb')
 const restricted = require('../auth/auth-middleware');
 const router = express.Router();
 
@@ -25,7 +25,7 @@ router.post('/add', (req, res) => {
         console.log(error)
       });
   });
-  router.get('/getOrderById/:id', (req,res) => {
+  router.get('/getOrderItemById/:id', (req,res) => {
     const {id} = req.params;
   
     db.getById(id)

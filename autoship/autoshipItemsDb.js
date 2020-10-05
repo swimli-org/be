@@ -10,20 +10,20 @@ module.exports = {
   };
 
   function get() {
-    return db('orders');
+    return db('autoship_items');
   }
 
   function getById(id) {
-    return db('orders')
+    return db('autoship_items')
       .where({ id })
       .first();
   }
 
   function getBy(filter) {
-    return db('orders').where(filter);
+    return db('autoship_items').where(filter);
   }
   function insert(user) {
-    return db('orders')
+    return db('autoship_items')
       .insert(user)
       .then(ids => {
         return getById(ids[0]);
@@ -31,14 +31,14 @@ module.exports = {
   }
   
   function update(id, changes) {
-    return db('orders')
+    return db('autoship_items')
       .where({ id })
       .update(changes)
       
   }
   
   function remove(id) {
-    return db('orders')
+    return db('autoship_items')
       .where('id', id)
       .del();
   }
