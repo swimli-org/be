@@ -12,6 +12,15 @@ router.get('/', (req,res) =>{
         res.status(500).json({ error: "The user information could not be retrieved." })
     })
 })
+
+router.get('/:id', (req,res) =>{
+  let {id} = req.body
+  db.getById(id).then(user => {
+      res.status(200).json(user);
+  }).catch(err => {
+      res.status(500).json({ "error": "The user information could not be retrieved.", "message":err })
+  })
+})
 router.post('/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
