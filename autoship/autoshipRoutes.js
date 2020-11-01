@@ -25,7 +25,7 @@ router.post('/add', (req, res) => {
         console.log(error)
       });
   });
-  router.get('/getOrderItemById/:id', (req,res) => {
+  router.get('/getAutoship/:id', (req,res) => {
     const {id} = req.params;
   
     db.getById(id)
