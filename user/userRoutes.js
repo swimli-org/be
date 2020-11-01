@@ -14,7 +14,7 @@ router.get('/', (req,res) =>{
 })
 
 router.get('/:id', (req,res) =>{
-  let {id} = req.body
+  let {id} = req.params
   db.getById(id).then(user => {
       res.status(200).json(user);
   }).catch(err => {
